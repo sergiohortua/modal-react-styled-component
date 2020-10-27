@@ -1,7 +1,7 @@
-import React, { useRef, useEffect, useCallback } from 'react';
-import { useSpring, animated } from 'react-spring';
-import styled from 'styled-components';
-import { MdClose } from 'react-icons/md';
+import React, { useRef, useEffect, useCallback } from "react";
+import { useSpring, animated } from "react-spring";
+import styled from "styled-components";
+import { MdClose } from "react-icons/md";
 
 export const Container = styled.div`
   display: flex;
@@ -23,7 +23,7 @@ export const Button = styled.button`
 const Background = styled.div`
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.6);
   position: fixed;
   display: flex;
   justify-content: center;
@@ -33,13 +33,12 @@ const Background = styled.div`
 const ModalWrapper = styled.div`
   width: 375px;
   height: 252px;
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
-  background: #fff;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 1);
+  background: #091E42;
   color: #000;
-  /* display: grid;
-  grid-template-columns: 1fr 1fr; */
-  position: relative;
-  z-index: 10;
+  display: grid;
+  grid-template-rows: 1fr 1fr; 
+
   border-radius: 10px;
 `;
 
@@ -84,35 +83,32 @@ export const Modal = ({ showModal, setShowModal }) => {
 
   const animation = useSpring({
     config: {
-      duration: 250
+      duration: 250,
     },
     opacity: showModal ? 1 : 0,
-    transform: showModal ? `translateY(0%)` : `translateY(-100%)`
+    transform: showModal ? `translateY(70%)` : `translateY(-100%)`,
   });
 
-  const closeModal = e => {
+  const closeModal = (e) => {
     if (modalRef.current === e.target) {
       setShowModal(false);
     }
   };
 
   const keyPress = useCallback(
-    e => {
-      if (e.key === 'Escape' && showModal) {
+    (e) => {
+      if (e.key === "Escape" && showModal) {
         setShowModal(false);
-        console.log('I pressed');
+        console.log("I pressed");
       }
     },
     [setShowModal, showModal]
   );
 
-  useEffect(
-    () => {
-      document.addEventListener('keydown', keyPress);
-      return () => document.removeEventListener('keydown', keyPress);
-    },
-    [keyPress]
-  );
+  useEffect(() => {
+    document.addEventListener("keydown", keyPress);
+    return () => document.removeEventListener("keydown", keyPress);
+  }, [keyPress]);
 
   return (
     <>
@@ -120,15 +116,13 @@ export const Modal = ({ showModal, setShowModal }) => {
         <Background onClick={closeModal} ref={modalRef}>
           <animated.div style={animation}>
             <ModalWrapper showModal={showModal}>
-              {/* <ModalImg alt='camera' /> */}
               <ModalContent>
                 <h1>Are you ready?</h1>
                 <p>Get exclusive access to our next launch.</p>
-                {/* <button>Join Now</button> */}
               </ModalContent>
               <CloseModalButton
-                aria-label='Close modal'
-                onClick={() => setShowModal(prev => !prev)}
+                aria-label="Close modal"
+                onClick={() => setShowModal((prev) => !prev)}
               />
             </ModalWrapper>
           </animated.div>

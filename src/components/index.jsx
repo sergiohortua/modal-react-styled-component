@@ -13,9 +13,8 @@ export const ModalP1=()=> {
   return (
     <>
       <Container>
-        <Button onClick={openModal}>I'm a modal</Button>
+        <Button onClick={openModal}>...</Button>
         <Modal showModal={showModal} setShowModal={setShowModal} />
-      
       </Container>
     </>
   );
