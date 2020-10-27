@@ -3,8 +3,23 @@ import { useSpring, animated } from 'react-spring';
 import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
 
+export const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
 
-
+export const Button = styled.button`
+  min-width: 100px;
+  padding: 16px 32px;
+  border-radius: 4px;
+  border: none;
+  background: #141414;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+`;
 const Background = styled.div`
   width: 100%;
   height: 100%;
@@ -16,8 +31,8 @@ const Background = styled.div`
 `;
 
 const ModalWrapper = styled.div`
-  width: 800px;
-  height: 500px;
+  width: 375px;
+  height: 252px;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   background: #fff;
   color: #000;
@@ -42,11 +57,9 @@ const ModalContent = styled.div`
   align-items: center;
   line-height: 1.8;
   color: #141414;
-
   p {
     margin-bottom: 1rem;
   }
-
   button {
     padding: 10px 24px;
     background: #141414;
@@ -107,10 +120,11 @@ export const Modal = ({ showModal, setShowModal }) => {
         <Background onClick={closeModal} ref={modalRef}>
           <animated.div style={animation}>
             <ModalWrapper showModal={showModal}>
+              {/* <ModalImg alt='camera' /> */}
               <ModalContent>
                 <h1>Are you ready?</h1>
                 <p>Get exclusive access to our next launch.</p>
-                <button>Join Now</button>
+                {/* <button>Join Now</button> */}
               </ModalContent>
               <CloseModalButton
                 aria-label='Close modal'
