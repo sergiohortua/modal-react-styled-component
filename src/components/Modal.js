@@ -3,6 +3,8 @@ import { useSpring, animated } from 'react-spring';
 import styled from 'styled-components';
 import { MdClose } from 'react-icons/md';
 
+
+
 const Background = styled.div`
   width: 100%;
   height: 100%;
@@ -19,8 +21,8 @@ const ModalWrapper = styled.div`
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   background: #fff;
   color: #000;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr; */
   position: relative;
   z-index: 10;
   border-radius: 10px;
@@ -105,7 +107,6 @@ export const Modal = ({ showModal, setShowModal }) => {
         <Background onClick={closeModal} ref={modalRef}>
           <animated.div style={animation}>
             <ModalWrapper showModal={showModal}>
-              <ModalImg alt='camera' />
               <ModalContent>
                 <h1>Are you ready?</h1>
                 <p>Get exclusive access to our next launch.</p>
