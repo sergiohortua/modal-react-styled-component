@@ -29,17 +29,15 @@ const Background = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
+/*Contenedor del modal */
 const ModalWrapper = styled.div`
   width: 375px;
   height: 252px;
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 1);
-  background: #091E42;
-  color: #000;
-  display: grid;
-  grid-template-rows: 1fr 1fr; 
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.1);
+  background: #091e42;
 
-  border-radius: 10px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
 `;
 
 const ModalImg = styled.img`
@@ -50,12 +48,13 @@ const ModalImg = styled.img`
 `;
 
 const ModalContent = styled.div`
-  display: flex;
+  display: ;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  line-height: 1.8;
-  color: #141414;
+  /*   line-height: 1.8;
+ */
+  color: #fff;
   p {
     margin-bottom: 1rem;
   }
@@ -66,17 +65,18 @@ const ModalContent = styled.div`
     border: none;
   }
 `;
-
+/*X de Close */
 const CloseModalButton = styled(MdClose)`
+  color: white; /*color de la X de cerrar */
   cursor: pointer;
   position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 32px;
-  height: 32px;
+  top: 10px;
+  right: 10px;
+  width: 14px;
+  height: 14px;
   padding: 0;
-  z-index: 10;
 `;
+export const StyledContainer = styled.div``;
 
 export const Modal = ({ showModal, setShowModal }) => {
   const modalRef = useRef();
@@ -118,7 +118,6 @@ export const Modal = ({ showModal, setShowModal }) => {
             <ModalWrapper showModal={showModal}>
               <ModalContent>
                 <h1>Are you ready?</h1>
-                <p>Get exclusive access to our next launch.</p>
               </ModalContent>
               <CloseModalButton
                 aria-label="Close modal"
